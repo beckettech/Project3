@@ -21,18 +21,17 @@ int main() {
 		getline(myfile,line);
 		while (getline(myfile, name, ',') ) {
 			getline(myfile, state, ',');
-			getline(myfile, strpop, ',');
+			getline(myfile, strpop);
 			if (strpop != "A") {
 				int pop = stoi(strpop);
 				City* city = new City(name, state, pop);
 				bst.insert(city);
 				
-				counter++;
+				
 			}
-			getline(myfile, line);
 
+			counter++;
 		}
-		//cout << (bst.head)->name <<endl;
 		cout << "done" << endl;
 		myfile.close();
 		
