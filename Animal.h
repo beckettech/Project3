@@ -7,3 +7,5 @@ class Animal{
 	string name;
 	float ratio;
 };
+
+//ryan added this
