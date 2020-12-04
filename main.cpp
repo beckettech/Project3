@@ -4,13 +4,15 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <chrono>
+#include <AVL.h>
 #include "OurBST.h"
 #include "Animal.h"
 #include "City.h"
 
 using namespace std;
 
-void BSTRead(OurBST& bst)
+void readData(OurBST& bst, AVL& AVLtree)
 {
 	ifstream myfile ("Project3Data.csv");
 	string line;
@@ -18,31 +20,68 @@ void BSTRead(OurBST& bst)
 	string state;
 	string strpop;
 
-	if (myfile.is_open()) {
-		int counter = 0;
+	auto BST_Start_Time = chrono::high_resolution_clock::now();
+	auto AVL_Start_Time = chrono::high_resolution_clock::now();
+
+
+	while(myfile.is_open())
+	{
+	    //start BST timer
+        auto BST_Start = chrono::high_resolution_clock::now();
+        BST_Start_Time = BST_Start;
+	    //insert file in a BST
+		int BSTcounter = 0;
 		getline(myfile,line);
-		while (getline(myfile, name, ',') ) {
+		while (getline(myfile, name, ',') )
+		{
 			getline(myfile, state, ',');
 			getline(myfile, strpop);
-			if (strpop != "A") {
+			if (strpop != "A")
+			{
 				int pop = stoi(strpop);
 				City* city = new City(name, state, pop);
 				bst.insert(city);
-				
-				
 			}
-
-			counter++;
+			BSTcounter++;
 		}
-		cout << "done" << endl;
 		myfile.close();
-		
 	}
-}
+    //end BST timer
+    auto BST_End = chrono::high_resolution_clock::now();
+    //calculate BST time elapsed
+    auto BST_Time = chrono::duration_cast<chrono::nanoseconds>(BST_End - BST_Start_Time).count();
+    cout<< "BST - Time Elapsed: " << BST_Time <<endl;
 
-void AVLRead()
-{
+    //reopen file for AVL tree
+    ifstream myfile2 ("Project3Data.csv");
+    while(myfile2.is_open())
+    {
+        //start AVL timer
+        auto AVL_Start = chrono::high_resolution_clock::now();
+        AVL_Start_Time = AVL_Start;
+        //insert file in a AVL tree
+        int AVLcounter = 0;
+        getline(myfile, line);
+        while (getline(myfile, name, ','))
+        {
+            getline(myfile, state, ',');
+            getline(myfile, strpop);
+            if (strpop != "A")
+            {
+                int pop = stoi(strpop);
+                City *city = new City(name, state, pop);
+                AVLtree.insert(city);
+            }
+            AVLcounter++;
+        }
+        myfile2.close();
+    }
 
+    //end BST timer
+    auto AVL_End = chrono::high_resolution_clock::now();
+    //calculate BST time elapsed
+    auto AVL_Time = chrono::duration_cast<chrono::nanoseconds>(AVL_End - AVL_Start_Time).count();
+    cout<< "AVL - Time Elapsed: " << AVL_Time <<endl;
 }
 
 void printAnimalList()
@@ -144,13 +183,10 @@ int main()
 	}
 	cout << "Excellent choice!" << endl;
 	
-	// read data into BST
+	// read in data
 	OurBST bst;
-	BSTRead(bst);
-
-	// read data into AVL
-	//initiate AVL here
-	AVLRead();
+	AVL avl;
+	readData(bst, avl);
 
 	// create animal weights
 	vector<pair<string, float>> animals;
@@ -182,12 +218,12 @@ int main()
 		float animalWeight = getAnimalWeight(userAnimal ,animals);
 		// run search in BST for cityState
 		double timeBST;
-		int popBST;		//serach for cityState within BST and return population
+		int popBST = bst.FindCity(cityState)->pop;
 		float animalsNeededBST = popBST * animalWeight;
 		
 		// run search in AVL for cityState
 		double timeAVL;
-		int popAVL;		//serach for cityState within AVL and return population
+		int popAVL = avl.FindCity(cityState)->pop;
 		float animalsNeededAVL = popAVL * animalWeight;
 
 		// print out results
@@ -224,10 +260,17 @@ int main()
 		}
 
 		//search thru BST and return the city/cities which a pop less than maxPop
+		double timeBST;
+
 		//search thru AVL and return the city/cities which a pop less than maxPop
+		double timeAVL;
+
 
 		// print results
-		
+		cout << "The following cities could be overthrown by your animal army:" << endl;
+		//print out vector of cities
+		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;
+		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;
 
 	}
 	
