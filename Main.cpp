@@ -16,13 +16,11 @@ int main() {
 	string state;
 	string strpop;
 	OurBST bst;
-    AVL AVLtree;
+    	AVL AVLtree;
 
-    std::__1::chrono::time_point<std::__1::chrono::steady_clock,
-    std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000> > > BST_Start_Time;
+    	auto BST_Start_Time = chrono::high_resolution_clock::now();
+    	auto AVL_Start_Time = chrono::high_resolution_clock::now();
 
-    std::__1::chrono::time_point<std::__1::chrono::steady_clock,
-    std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000> > > AVL_Start_Time;
 
 	while(myfile.is_open())
 	{
