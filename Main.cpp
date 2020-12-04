@@ -39,7 +39,7 @@ int main() {
 			if (strpop != "A")
 			{
 				int pop = stoi(strpop);
-				City* city = new City(name, pop);
+				City* city = new City(name, state, pop);
 				bst.insert(city);
 			}
 			BSTcounter++;
@@ -69,7 +69,7 @@ int main() {
             if (strpop != "A")
             {
                 int pop = stoi(strpop);
-                City *city = new City(name, pop);
+                City *city = new City(name, state, pop);
                 AVLtree.insert(city);
             }
             AVLcounter++;
