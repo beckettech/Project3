@@ -10,11 +10,11 @@ struct City {
 	City* right;
 	City* left;
 	City* parent;
-	City(string name, int pop);
+	City(string name, string state, int pop);
 };
 
-City::City(string name, int pop) {
-	this->name = name;
+City::City(string city, string state, int pop) {
+	this->name = city + ", " + state;
 	this->pop = pop;
 	right = nullptr;
 	left = nullptr;
