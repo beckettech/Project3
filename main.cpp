@@ -215,7 +215,6 @@ int main()
 		
 		// calculate number of animals needed
 		float animalWeight = getAnimalWeight(userAnimal, animals);
-		cout << animalWeight << endl;
 		// run search in BST for cityState
 		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		int popBST = bst.FindCity(cityState)->pop;
@@ -231,8 +230,8 @@ int main()
 		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(avlSearchEndTime - avlSearchStartTime).count();
 
 		// print out results
-		cout << "BST: " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
-		cout << "AVL: " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
+		cout << "[BST] " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
+		cout << "[AVL] " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
@@ -275,9 +274,9 @@ int main()
 		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
 
 		// print results
-		cout << "BST: The following cities could be overthrown by your animal army:" << endl;
+		cout << "[BST] The following cities could be overthrown by your animal army:" << endl;
 		//print out vector of cities from BST
-		cout << "AVL: The following cities could be overthrown by your animal army:" << endl;
+		cout << "[AVL] The following cities could be overthrown by your animal army:" << endl;
 		//print out vector of cities from AVL
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
