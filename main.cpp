@@ -23,7 +23,6 @@ void readData(OurBST& bst, AVL& AVLtree)
 	auto BST_Start_Time = chrono::high_resolution_clock::now();
 	auto AVL_Start_Time = chrono::high_resolution_clock::now();
 
-
 	while(myfile.is_open())
 	{
 	    //start BST timer
@@ -50,7 +49,7 @@ void readData(OurBST& bst, AVL& AVLtree)
     auto BST_End = chrono::high_resolution_clock::now();
     //calculate BST time elapsed
     auto BST_Time = chrono::duration_cast<chrono::nanoseconds>(BST_End - BST_Start_Time).count();
-    cout<< "BST - Time Elapsed: " << BST_Time <<endl;
+	cout << "Storing the data in the BST took " << BST_Time << " nanoseconds." << endl;
 
     //reopen file for AVL tree
     ifstream myfile2 ("Project3Data.csv");
@@ -81,7 +80,7 @@ void readData(OurBST& bst, AVL& AVLtree)
     auto AVL_End = chrono::high_resolution_clock::now();
     //calculate BST time elapsed
     auto AVL_Time = chrono::duration_cast<chrono::nanoseconds>(AVL_End - AVL_Start_Time).count();
-    cout<< "AVL - Time Elapsed: " << AVL_Time <<endl;
+	cout << "Storing the data in the AVL Tree took " << AVL_Time << " nanoseconds." << endl;
 }
 
 void printAnimalList()
@@ -217,19 +216,23 @@ int main()
 		// calculate number of animals needed
 		float animalWeight = getAnimalWeight(userAnimal ,animals);
 		// run search in BST for cityState
-		double timeBST;																							// idk how to do the timer
+		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		int popBST = bst.FindCity(cityState)->pop;
+		auto bstSearchEndTime = chrono::high_resolution_clock::now();
 		float animalsNeededBST = popBST * animalWeight;
+		auto bstSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
 		
 		// run search in AVL for cityState
-		double timeAVL;																							// idk how to do the timer
+		auto avlSearchStartTime = chrono::high_resolution_clock::now();
 		int popAVL = avl.FindCity(cityState)->pop;
+		auto avlSearchEndTime = chrono::high_resolution_clock::now();
 		float animalsNeededAVL = popAVL * animalWeight;
+		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
 
 		// print out results
 		cout << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
-		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;							// idk how to do the timer
-		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;						// idk how to do the timer
+		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
+		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
 	}
 	else if(userOption == 2){
@@ -259,18 +262,21 @@ int main()
 			maxPop += (1 / getAnimalWeight(it->first, animals)) * it->second;
 		}
 
+		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		//search thru BST and return the city/cities which a pop less than maxPop
-		double timeBST;																							// idk how to do the timer
-																												// need a search function by pop
+		auto bstSearchEndTime = chrono::high_resolution_clock::now();
+		auto bstSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
+
+		auto avlSearchStartTime = chrono::high_resolution_clock::now();
 		//search thru AVL and return the city/cities which a pop less than maxPop
-		double timeAVL;																							// idk how to do the timer
-																												// need a search function by pop
+		auto avlSearchEndTime = chrono::high_resolution_clock::now();
+		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
 
 		// print results
 		cout << "The following cities could be overthrown by your animal army:" << endl;
 		//print out vector of cities
-		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;							// idk how to do the timer
-		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;						// idk how to do the timer
+		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
+		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
 	}
 	
