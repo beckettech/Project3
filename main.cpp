@@ -217,19 +217,19 @@ int main()
 		// calculate number of animals needed
 		float animalWeight = getAnimalWeight(userAnimal ,animals);
 		// run search in BST for cityState
-		double timeBST;
+		double timeBST;																							// idk how to do the timer
 		int popBST = bst.FindCity(cityState)->pop;
 		float animalsNeededBST = popBST * animalWeight;
 		
 		// run search in AVL for cityState
-		double timeAVL;
+		double timeAVL;																							// idk how to do the timer
 		int popAVL = avl.FindCity(cityState)->pop;
 		float animalsNeededAVL = popAVL * animalWeight;
 
 		// print out results
 		cout << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
-		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;
-		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;
+		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;							// idk how to do the timer
+		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;						// idk how to do the timer
 
 	}
 	else if(userOption == 2){
@@ -260,17 +260,17 @@ int main()
 		}
 
 		//search thru BST and return the city/cities which a pop less than maxPop
-		double timeBST;
-
+		double timeBST;																							// idk how to do the timer
+																												// need a search function by pop
 		//search thru AVL and return the city/cities which a pop less than maxPop
-		double timeAVL;
-
+		double timeAVL;																							// idk how to do the timer
+																												// need a search function by pop
 
 		// print results
 		cout << "The following cities could be overthrown by your animal army:" << endl;
 		//print out vector of cities
-		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;
-		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;
+		cout << "Storing the data in a BST took " << timeBST << " seconds." << endl;							// idk how to do the timer
+		cout << "Storing the data in an AVL Tree took " << timeAVL << "seconds." << endl;						// idk how to do the timer
 
 	}
 	
