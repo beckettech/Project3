@@ -76,16 +76,16 @@ void readData(OurBST& bst, AVL& AVLtree)
         myfile2.close();
     }
 
-    //end BST timer
+    //end AVL timer
     auto AVL_End = chrono::high_resolution_clock::now();
-    //calculate BST time elapsed
+    //calculate AVL time elapsed
     auto AVL_Time = chrono::duration_cast<chrono::nanoseconds>(AVL_End - AVL_Start_Time).count();
 	cout << "Storing the data in the AVL Tree took " << AVL_Time << " nanoseconds." << endl;
 }
 
 void printAnimalList()
 {
-	cout << "Please note that these numbers were created with no weapons use by any party.\n" << endl;
+	cout << "\nPlease note that these numbers were created with no weapon use by any party.\n" << endl;
 
 	cout << "Duck:" << endl;
 	cout << "\t\t 15 ducks to 1 person" << endl;
@@ -144,10 +144,10 @@ void createAnimals(vector<pair<string, float>>& animals)
 
 bool validateAnimalAddition(string userAnimal)
 {
-	if(userAnimal != "duck" || userAnimal != "lion" || userAnimal != "fire ant" || userAnimal != "grizzly bear" || userAnimal != "emu" || userAnimal != "squirrel" || userAnimal != "chimpanzee" || userAnimal != "gator" || userAnimal != "gorilla") {
-		return false;
-	}else{
+	if(userAnimal == "duck" || userAnimal == "lion" || userAnimal == "fire ant" || userAnimal == "grizzly bear" || userAnimal == "emu" || userAnimal == "squirrel" || userAnimal == "chimpanzee" || userAnimal == "gator" || userAnimal == "gorilla") {
 		return true;
+	}else{
+		return false;
 	}
 }
 
@@ -158,6 +158,7 @@ float getAnimalWeight(string animal, vector<pair<string, float>> animals)
 			return it->second;
 		}
 	}
+	return 0.0;
 }
 
 int main()
@@ -165,8 +166,7 @@ int main()
 	// introduction
 	cout << "Hello and welcome to: Lions and Tigers and Bears, Oh My!" << endl;
 	cout << "This program will allow you to approxiate the number of a type of animal needed to overthrow any city" << endl;
-	cout << "in the United States based off of population data gathered by the US Census Department." << endl;
-	cout << "\n" << endl;	
+	cout << "in the United States based off of population data gathered by the US Census Department.\n" << endl;
 
 	// user chooses which option to run
 	cout << "Please indicate which process you would like to run:" << endl;
@@ -176,11 +176,11 @@ int main()
 	cout << "\t\twe will then tell you which US cities could reasonably be overthrown by your assembled animal army." << endl;
 
 	int userOption = 0;
-	while(userOption != 1 || userOption != 2){
+	while(userOption != 1 && userOption != 2){
 		cout << "\nPlease make your selection by entering either \"1\" or \"2\": " << endl;
 		cin >> userOption;
 	}
-	cout << "Excellent choice!" << endl;
+	cout << "Excellent choice!\n" << endl;
 	
 	// read in data
 	OurBST bst;
@@ -192,7 +192,7 @@ int main()
 	createAnimals(animals);
 
 	// animal list
-	cout << "Here is the list of supported animals along with the assocaited data relating to defeating the average human:" << endl;
+	cout << "\nHere is the list of supported animals along with the assocaited data relating to defeating the average human:" << endl;
 	printAnimalList();
 	cout << "\n" << endl;
 
@@ -214,7 +214,8 @@ int main()
 		}
 		
 		// calculate number of animals needed
-		float animalWeight = getAnimalWeight(userAnimal ,animals);
+		float animalWeight = getAnimalWeight(userAnimal, animals);
+		cout << animalWeight << endl;
 		// run search in BST for cityState
 		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		int popBST = bst.FindCity(cityState)->pop;
@@ -227,10 +228,11 @@ int main()
 		int popAVL = avl.FindCity(cityState)->pop;
 		auto avlSearchEndTime = chrono::high_resolution_clock::now();
 		float animalsNeededAVL = popAVL * animalWeight;
-		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
+		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(avlSearchEndTime - avlSearchStartTime).count();
 
 		// print out results
-		cout << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
+		cout << "BST: " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
+		cout << "AVL: " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
@@ -273,8 +275,10 @@ int main()
 		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
 
 		// print results
-		cout << "The following cities could be overthrown by your animal army:" << endl;
-		//print out vector of cities
+		cout << "BST: The following cities could be overthrown by your animal army:" << endl;
+		//print out vector of cities from BST
+		cout << "AVL: The following cities could be overthrown by your animal army:" << endl;
+		//print out vector of cities from AVL
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
