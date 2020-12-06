@@ -300,21 +300,23 @@ int main()
 		// calculate number of animals needed
 		float animalWeight = getAnimalWeight(userAnimal, animals);
 		// run search in BST for cityState
+		cout << "\nPlease wait while the BST is searched..." << endl;
 		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		int popBST = bst.FindCity(cityState)->pop;
 		auto bstSearchEndTime = chrono::high_resolution_clock::now();
 		float animalsNeededBST = popBST * animalWeight;
 		auto bstSearchTime = chrono::duration_cast<chrono::nanoseconds>(bstSearchEndTime - bstSearchStartTime).count();
-		cout << "bst searched" << endl;
+		cout << "BST has been successfully searched." << endl;
 		// run search in AVL for cityState
+		cout << "\nPlease wait while the AVL is searched..." << endl;
 		auto avlSearchStartTime = chrono::high_resolution_clock::now();
 		int popAVL = avl.FindCity(cityState)->pop;
 		auto avlSearchEndTime = chrono::high_resolution_clock::now();
 		float animalsNeededAVL = popAVL * animalWeight;
 		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(avlSearchEndTime - avlSearchStartTime).count();
-		cout << "avl searched" << endl;
+		cout << "AVL has been successfully searched." << endl;
 		// print out results
-		cout << "[BST] " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
+		cout << "\n[BST] " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "\n[AVL] " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
@@ -324,7 +326,7 @@ int main()
 
 		// read in data - sorted by population
 		IntBST bstPop;
-		IntAVL avlPop;		//change this to be type of new AVL sorted by pop
+		IntAVL avlPop;
 		readDataPop(bstPop, avlPop);
 
 		cout << "Please enter the animals you would like to add to your army followed by the number of that animal." << endl;
@@ -348,7 +350,7 @@ int main()
 		for (auto it = userAnimalArmy.begin(); it != userAnimalArmy.end(); ++it) {
 			maxPop += (1 / getAnimalWeight(it->first, animals)) * it->second;
 		}
-		cout << "Your animal army could overthrow any city with a population less than " << maxPop << "!\n" << endl;
+		cout << "Your animal army could overthrow any city with a population less than " << maxPop << "!" << endl;
 
 		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		City* bstCityOverthrown = bstPop.FindCity(maxPop);
@@ -362,7 +364,7 @@ int main()
 		auto avlSearchTime = chrono::duration_cast<chrono::nanoseconds>(avlSearchEndTime - avlSearchStartTime).count();
 
 		// print results
-		cout << "[BST] " << bstCityOverthrown->name << " is the largest city that could be overthrown by your animal army" << endl;
+		cout << "\n[BST] " << bstCityOverthrown->name << " is the largest city that could be overthrown by your animal army" << endl;
 		cout << "Population: " << bstCityOverthrown->pop << endl;
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 
