@@ -353,7 +353,7 @@ int main()
 		for (auto it = userAnimalArmy.begin(); it != userAnimalArmy.end(); ++it) {
 			maxPop += (1 / getAnimalWeight(it->first, animals)) * it->second;
 		}
-		cout << "Your animal army could overthrow any city with a population less than " << maxPop << "!" << endl;
+		cout << "\nYour animal army could overthrow any city with a population less than " << maxPop << "!" << endl;
 
 		auto bstSearchStartTime = chrono::high_resolution_clock::now();
 		City* bstCityOverthrown = bstPop.FindCity(maxPop);
