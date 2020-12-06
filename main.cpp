@@ -84,7 +84,7 @@ void readDataName(OurBST& bst, AVL& AVLtree)
 	cout << "Storing the data in the AVL Tree took " << AVL_Time << " nanoseconds." << endl;
 }
 
-void readDataPop(OurBST& bstPop, AVL& AVLtreePop)
+void readDataPop(IntBST& bstPop, AVL& AVLtreePop)
 {
 	
 }
@@ -259,8 +259,8 @@ int main()
 	else if(userOption == 2){
 
 		// read in data - sorted by population
-		OurBST bstPop;
-		AVL avlPop;
+		IntBST bstPop;
+		AVL avlPop;		//change this to be type of new AVL sorted by pop
 		readDataPop(bstPop, avlPop);
 
 		cout << "Please enter the animals you would like to add to your army followed by the number of that animal." << endl;
