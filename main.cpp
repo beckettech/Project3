@@ -148,15 +148,6 @@ void createAnimals(vector<pair<string, float>>& animals)
 	animals.push_back(make_pair("gorilla", .05));
 }
 
-bool validateAnimalAddition(string userAnimal)
-{
-	if(userAnimal == "duck" || userAnimal == "lion" || userAnimal == "fire ant" || userAnimal == "grizzly bear" || userAnimal == "emu" || userAnimal == "squirrel" || userAnimal == "chimpanzee" || userAnimal == "gator" || userAnimal == "gorilla") {
-		return true;
-	}else{
-		return false;
-	}
-}
-
 float getAnimalWeight(string animal, vector<pair<string, float>> animals)
 {
 	for(auto it = animals.begin(); it != animals.end(); ++it){
@@ -195,10 +186,8 @@ int main()
 	cout << "\t\twe will then tell you which US cities could reasonably be overthrown by your assembled animal army." << endl;
 
 	int userOption = 0;
-	while(userOption != 1 && userOption != 2){
-		cout << "\nPlease make your selection by entering either \"1\" or \"2\": " << endl;
-		cin >> userOption;
-	}
+	cout << "\nPlease make your selection by entering either \"1\" or \"2\": " << endl;
+	cin >> userOption;
 	cout << "Excellent choice!\n" << endl;	
 
 	// create animal weights
@@ -227,14 +216,9 @@ int main()
 		getline(cin, stateChoice);
 		string cityState = cityChoice + ", " + stateChoice;
 		string userAnimal;
-		bool validAnimal = false;
-		while(!validAnimal){
-			cout << "Please select your animal from the above list: ";
-			cin.ignore();
-			getline(cin, userAnimal);
-			transform(userAnimal.begin(), userAnimal.end(), userAnimal.begin(), ::tolower);
-			validAnimal = validateAnimalAddition(userAnimal);
-		}
+		cout << "Please select your animal from the above list: ";
+		cin.ignore();
+		getline(cin, userAnimal);		
 		
 		// calculate number of animals needed
 		float animalWeight = getAnimalWeight(userAnimal, animals);
@@ -278,13 +262,9 @@ int main()
 			if(userAnimal == "-1"){
 				break;
 			}
-			transform(userAnimal.begin(), userAnimal.end(), userAnimal.begin(), ::tolower);
-			bool validAnimal = validateAnimalAddition(userAnimal);
-			if(validAnimal){
-				cout << "Please enter the number of " << userAnimal << "s to add: ";
-				cin >> numOfAnimal;
-				userAnimalArmy.push_back(make_pair(userAnimal, numOfAnimal));
-			}
+			cout << "Please enter the number of " << userAnimal << "s to add: ";
+			cin >> numOfAnimal;
+			userAnimalArmy.push_back(make_pair(userAnimal, numOfAnimal));
 		}
 
 		double maxPop = 0;
