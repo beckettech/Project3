@@ -212,7 +212,6 @@ int main()
 		cin.ignore();
 		getline(cin, cityChoice);
 		cout << "In which US state is " << cityChoice << " located: ";
-		cin.ignore();
 		getline(cin, stateChoice);
 		string cityState = cityChoice + ", " + stateChoice;
 		string userAnimal;
@@ -284,19 +283,20 @@ int main()
 
 		// print results
 		cout << "[BST] The following cities could be overthrown by your animal army:" << endl;
-		//search thru bst and return vector of City* with populations less than / equal to maxPop
 		vector<City*> bstCitiesOverthrown;
+		//search thru bst and return vector of City* with populations less than / equal to maxPop
 		printCityList(bstCitiesOverthrown);
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "[AVL] The following cities could be overthrown by your animal army:" << endl;
-		//search thru bst and return vector of City* with populations less than / equal to maxPop
 		vector<City*> avlCitiesOverthrown;
+		//search thru bst and return vector of City* with populations less than / equal to maxPop
 		printCityList(avlCitiesOverthrown);
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
 	}
 	
-
+	cout << "\nThank you for using Lions and Tigers and Bears, Oh My!" << endl;
+	cout << "" << endl;
 
 	return 0;
 }
