@@ -6,16 +6,21 @@
 using namespace std;
 
 
-class OurBST{
+class OurBST {
 public:
 	City* head;
 	City* FindCity(string name);
 	void insert(City* newCity);
 	OurBST(City* head);
+	OurBST();
 };
 
 OurBST::OurBST(City* head) {
 	this->head = head;
+}
+
+OurBST::OurBST() {
+	this->head = nullptr;
 }
 
 City* OurBST::FindCity(string name) {
@@ -43,7 +48,7 @@ City* OurBST::FindCity(string name) {
 
 	return temp;
 
-	
+
 }
 
 void OurBST::insert(City* newCity) {
@@ -57,7 +62,7 @@ void OurBST::insert(City* newCity) {
 		this->head = temp;
 		return;
 	}
-	
+
 
 	while (temp->name != name) {
 		int a = name.compare(temp->name);
@@ -80,8 +85,9 @@ void OurBST::insert(City* newCity) {
 			}
 		}
 	}
-
+	/*
 	if (temp->name == name) {
 		cout << "Name already entered" << endl;
 	}
+	*/
 }
