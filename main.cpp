@@ -216,7 +216,6 @@ int main()
 		string cityState = cityChoice + ", " + stateChoice;
 		string userAnimal;
 		cout << "Please select your animal from the above list: ";
-		cin.ignore();
 		getline(cin, userAnimal);		
 		
 		// calculate number of animals needed
