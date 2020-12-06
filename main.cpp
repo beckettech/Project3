@@ -216,7 +216,8 @@ int main()
 		string cityState = cityChoice + ", " + stateChoice;
 		string userAnimal;
 		cout << "Please select your animal from the above list: ";
-		getline(cin, userAnimal);		
+		getline(cin, userAnimal);
+		transform(userAnimal.begin(), userAnimal.end(), userAnimal.begin(), ::tolower);
 		
 		// calculate number of animals needed
 		float animalWeight = getAnimalWeight(userAnimal, animals);
