@@ -46,7 +46,7 @@ void readDataName(OurBST& bst, AVL& AVLtree)
 			BSTcounter++;
 		}
 		myfile.close();
-		cout << "data read into bst successfully" << endl;
+		cout << "Data read into BST successfully." << endl;
 	}
 	//end BST timer
 	auto BST_End = chrono::high_resolution_clock::now();
@@ -80,7 +80,7 @@ void readDataName(OurBST& bst, AVL& AVLtree)
 			AVLcounter++;
 		}
 		myfile.close();
-		cout << "data read into avl successfully" << endl;
+		cout << "Data read into AVL successfully." << endl;
 	}
 
 	//end AVL timer
@@ -283,10 +283,11 @@ int main()
 		// read in data - sorted by name
 		OurBST bst;
 		AVL avl;
+		cout << "\nPlease wait while the BST and AVL are read-in..." << endl;
 		readDataName(bst, avl);
 
 		string cityChoice, stateChoice;
-		cout << "Please enter the city to be overthrown: ";
+		cout << "\nPlease enter the city to be overthrown: ";
 		cin.ignore();
 		getline(cin, cityChoice);
 		cout << "In which US state is " << cityChoice << " located: ";
@@ -317,9 +318,9 @@ int main()
 		cout << "AVL has been successfully searched." << endl;
 		// print out results
 		cout << "\n[BST] " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
-		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
+		cout << " Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
 		cout << "\n[AVL] " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
-		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
+		cout << " Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
 	}
 	else if (userOption == 2) {
@@ -327,6 +328,7 @@ int main()
 		// read in data - sorted by population
 		IntBST bstPop;
 		IntAVL avlPop;
+		cout << "\nPlease wait while the BST and AVL are read-in..." << endl;
 		readDataPop(bstPop, avlPop);
 
 		cout << "Please enter the animals you would like to add to your army followed by the number of that animal." << endl;
