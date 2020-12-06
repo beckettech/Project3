@@ -12,7 +12,12 @@ public:
 	City* FindCity(string name);
 	void insert(City* newCity);
 	OurBST(City* head);
+	OurBST();
 };
+
+OurBST::OurBST() {
+	this->head = nullptr;
+}
 
 OurBST::OurBST(City* head) {
 	this->head = head;
