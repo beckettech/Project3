@@ -7,12 +7,13 @@
 #include <chrono>
 #include "AVL.h"
 #include "OurBST.h"
+#include "IntBST.h"
 #include "Animal.h"
 #include "City.h"
 
 using namespace std;
 
-void readData(OurBST& bst, AVL& AVLtree)
+void readDataName(OurBST& bst, AVL& AVLtree)
 {
 	ifstream myfile ("Project3Data.csv");
 	string line;
@@ -81,6 +82,11 @@ void readData(OurBST& bst, AVL& AVLtree)
     //calculate AVL time elapsed
     auto AVL_Time = chrono::duration_cast<chrono::nanoseconds>(AVL_End - AVL_Start_Time).count();
 	cout << "Storing the data in the AVL Tree took " << AVL_Time << " nanoseconds." << endl;
+}
+
+void readDataPop(OurBST& bstPop, AVL& AVLtreePop)
+{
+	
 }
 
 void printAnimalList()
@@ -193,12 +199,7 @@ int main()
 		cout << "\nPlease make your selection by entering either \"1\" or \"2\": " << endl;
 		cin >> userOption;
 	}
-	cout << "Excellent choice!\n" << endl;
-	
-	// read in data
-	OurBST bst;
-	AVL avl;
-	readData(bst, avl);
+	cout << "Excellent choice!\n" << endl;	
 
 	// create animal weights
 	vector<pair<string, float>> animals;
@@ -211,6 +212,12 @@ int main()
 
 	// actually do what user wants
 	if(userOption == 1){
+		
+		// read in data - sorted by name
+		OurBST bst;
+		AVL avl;
+		readDataName(bst, avl);
+		
 		string cityChoice, stateChoice;
 		cout << "Please enter the city to be overthrown: ";
 		cin >> cityChoice;
@@ -250,6 +257,11 @@ int main()
 
 	}
 	else if(userOption == 2){
+
+		// read in data - sorted by population
+		OurBST bstPop;
+		AVL avlPop;
+		readDataPop(bstPop, avlPop);
 
 		cout << "Please enter the animals you would like to add to your army followed by the number of that animal." << endl;
 		cout << "Enter \"-1\" as the animal name when you are done adding." << endl;
