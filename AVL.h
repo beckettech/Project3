@@ -33,7 +33,7 @@ City* AVL::FindCity(string name)
 	while (temp->name != name)
 	{
 		int a = name.compare(temp->name);
-		if (a == 1)
+		if (a >= 1)
 		{
 			if (temp->right)
 			{
@@ -42,7 +42,7 @@ City* AVL::FindCity(string name)
 			else
 				return nullptr;
 		}
-		if (a == -1)
+		if (a <= -1)
 		{
 			if (temp->left)
 			{
@@ -160,7 +160,7 @@ void AVL::insert(City* newCity)
 	while (temp->name != name)
 	{
 		int a = name.compare(temp->name);
-		if (a == 1)
+		if (a >= 1)
 		{
 			if (temp->right)
 			{
@@ -172,7 +172,7 @@ void AVL::insert(City* newCity)
 				break;
 			}
 		}
-		if (a == -1)
+		if (a <= -1)
 		{
 			if (temp->left)
 			{
@@ -184,10 +184,5 @@ void AVL::insert(City* newCity)
 				break;
 			}
 		}
-	}
-
-	if (temp->name == name)
-	{
-		cout << "Name already entered" << endl;
 	}
 }
