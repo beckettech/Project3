@@ -122,7 +122,7 @@ void readDataPop(IntBST& bstPop, IntAVL& AVLtreePop)
 			BSTcounter++;
 		}
 		myfile.close();
-		cout << "data read into bst successfully" << endl;
+		cout << "Data read into BST successfully" << endl;
 	}
 	//end BST timer
 	auto BST_End = chrono::high_resolution_clock::now();
@@ -156,7 +156,7 @@ void readDataPop(IntBST& bstPop, IntAVL& AVLtreePop)
 			AVLcounter++;
 		}
 		myfile.close();
-		cout << "data read into avl successfully" << endl;
+		cout << "Data read into AVL successfully" << endl;
 	}
 
 	//end AVL timer
@@ -328,10 +328,10 @@ int main()
 		// read in data - sorted by population
 		IntBST bstPop;
 		IntAVL avlPop;
-		cout << "\nPlease wait while the BST and AVL are read-in..." << endl;
+		cout << "\nPlease wait while the BST and AVL are read-in...\n" << endl;
 		readDataPop(bstPop, avlPop);
 
-		cout << "Please enter the animals you would like to add to your army followed by the number of that animal." << endl;
+		cout << "\nPlease enter the animals you would like to add to your army followed by the number of that animal." << endl;
 		cout << "Enter \"-1\" as the animal name when you are done adding." << endl;
 		vector<pair<string, int>> userAnimalArmy;
 		string userAnimal = "";
@@ -345,6 +345,7 @@ int main()
 			}
 			cout << "Please enter the number of " << userAnimal << "s to add: ";
 			cin >> numOfAnimal;
+			transform(userAnimal.begin(), userAnimal.end(), userAnimal.begin(), ::tolower);
 			userAnimalArmy.push_back(make_pair(userAnimal, numOfAnimal));
 		}
 
