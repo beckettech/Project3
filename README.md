@@ -1,4 +1,4 @@
-# Project3
+# Project 3 - Group 27 - Lions, Tigers, and Bears, Oh My!
 UF COP3530 
 
 Project 3 - Group 27 - Lions, Tigers, and Bears, Oh My!
