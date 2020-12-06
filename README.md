@@ -1,8 +1,10 @@
 # Project3
-UF COP3530 Project 3
+UF COP3530 
 
-
-Proposal: https://docs.google.com/document/d/1aTqLax1njzG9Vbx9zpfstYuNhln8jYS4V-CDK8LaPug/edit#
+Project 3 - Group 27 - Lions, Tigers, and Bears, Oh My!
+ 
+Team Name: Algorithmic Alligators
+Team Members: Ryan Morse, David Vizzi, Beckett Hoefling
 
 
 Note that the code assumes that all input is in the correct format and that all cities, states, and animals entered by the user are valid and spelled correctly with proper capitalization.
