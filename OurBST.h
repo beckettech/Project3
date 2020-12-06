@@ -72,6 +72,7 @@ void OurBST::insert(City* newCity) {
 			}
 			else {
 				temp->right = newCity;
+				newCity->parent = temp;
 				break;
 			}
 		}
@@ -81,13 +82,10 @@ void OurBST::insert(City* newCity) {
 			}
 			else {
 				temp->left = newCity;
+				newCity->parent = temp;
 				break;
 			}
 		}
 	}
-	/*
-	if (temp->name == name) {
-		cout << "Name already entered" << endl;
-	}
-	*/
+
 }
