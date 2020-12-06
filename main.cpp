@@ -235,6 +235,20 @@ float getAnimalWeight(string animal, vector<pair<string, float>> animals)
 	return 0.0;
 }
 
+void printCityList(vector<City*> cities)
+{
+	bool firstPrinted = false;
+	for (int i = 0; i < cities.size(); i++) {
+		if (firstPrinted == false) {
+			cout << cities[i]->name;
+		}
+		else {
+			cout << " | " << cities[i]->name;
+		}
+	}
+	cout << endl;
+}
+
 int main()
 {
 	// introduction
