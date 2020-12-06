@@ -26,14 +26,16 @@ IntBST::IntBST() {
 
 City* IntBST::FindCity(int pop) {
 	City* temp = this->head;
+	City* highestBelow = nullptr;
 
-	while (temp->pop != pop) {
+	while (temp->pop != pop && (temp->right || temp->left)) {
 		if (pop > temp->pop) {
 			if (temp->right) {
+				highestBelow = temp;
 				temp = temp->right;
 			}
 			else {
-				return nullptr;
+				return highestBelow;
 			}
 		}
 		if (pop < temp->pop) {
@@ -41,7 +43,7 @@ City* IntBST::FindCity(int pop) {
 				temp = temp->left;
 			}
 			else {
-				return nullptr;
+				return highestBelow;
 			}
 		}
 	}
@@ -86,6 +88,6 @@ void IntBST::insert(City* newCity) {
 			}
 		}
 	}
-
+	
 	
 }
