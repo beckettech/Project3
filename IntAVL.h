@@ -33,15 +33,15 @@ City* IntAVL::FindCity(int pop)
 
 	while (temp->pop != pop && (temp->right || temp->left)) {
 		if (pop > temp->pop) {
+			highestBelow = temp;
 			if (temp->right) {
-				highestBelow = temp;
 				temp = temp->right;
 			}
 			else {
 				return highestBelow;
 			}
 		}
-		if (pop < temp->pop) {
+		else if (pop < temp->pop) {
 			if (temp->left) {
 				temp = temp->left;
 			}
@@ -49,6 +49,12 @@ City* IntAVL::FindCity(int pop)
 				return highestBelow;
 			}
 		}
+	}
+	if (!(temp->right || temp->left)) {
+		if (pop < temp->pop) {
+			return highestBelow;
+		}
+
 	}
 
 	return temp;
