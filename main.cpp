@@ -85,47 +85,47 @@ void readData(OurBST& bst, AVL& AVLtree)
 
 void printAnimalList()
 {
-	cout << "\nPlease note that these numbers were created with no weapon use by any party.\n" << endl;
+	cout << "\n\tPlease note that these numbers were created with no weapon use by any party.\n" << endl;
 
-	cout << "Duck:" << endl;
-	cout << "\t\t 15 ducks to 1 person" << endl;
-	cout << "\t\t 0.067 people to 1 duck" << endl;
+	cout << "\tDuck:" << endl;
+	cout << "\t\t\t 15 ducks to 1 person" << endl;
+	cout << "\t\t\t 0.067 people to 1 duck" << endl;
 	
-	cout << "Lion:" << endl;
-	cout << "\t\t .08 lions to 1 person" << endl;
-	cout << "\t\t 12.5 people to 1 lion" << endl;
+	cout << "\tLion:" << endl;
+	cout << "\t\t\t .08 lions to 1 person" << endl;
+	cout << "\t\t\t 12.5 people to 1 lion" << endl;
 	
-	cout << "T-Rex:" << endl;
-	cout << "\t\t .0025 T-Rexes to 1 person" << endl;
-	cout << "\t\t 400 people to 1 T-Rex" << endl;
+	cout << "\tT-Rex:" << endl;
+	cout << "\t\t\t .0025 T-Rexes to 1 person" << endl;
+	cout << "\t\t\t 400 people to 1 T-Rex" << endl;
 	
-	cout << "Fire Ant:" << endl;
-	cout << "\t\t 750 fire ants to 1 person" << endl;
-	cout << "\t\t .0013 people to 1 fire ant" << endl;
+	cout << "\tFire Ant:" << endl;
+	cout << "\t\t\t 750 fire ants to 1 person" << endl;
+	cout << "\t\t\t .0013 people to 1 fire ant" << endl;
 	
-	cout << "Grizzly Bear:" << endl;
-	cout << "\t\t .0625 grizzly bears to 1 person" << endl;
-	cout << "\t\t 16 people to 1 grizzly bear" << endl;
+	cout << "\tGrizzly Bear:" << endl;
+	cout << "\t\t\t .0625 grizzly bears to 1 person" << endl;
+	cout << "\t\t\t 16 people to 1 grizzly bear" << endl;
 	
-	cout << "Emu:" << endl;
-	cout << "\t\t 1 emu to 1 person" << endl;
-	cout << "\t\t 1 person to 1 emu" << endl;
+	cout << "\tEmu:" << endl;
+	cout << "\t\t\t 1 emu to 1 person" << endl;
+	cout << "\t\t\t 1 person to 1 emu" << endl;
 	
-	cout << "Squirrel:" << endl;
-	cout << "\t\t 22 squirrels to 1 person" << endl;
-	cout << "\t\t .046 people to 1 squirrel" << endl;
+	cout << "\tSquirrel:" << endl;
+	cout << "\t\t\t 22 squirrels to 1 person" << endl;
+	cout << "\t\t\t .046 people to 1 squirrel" << endl;
 	
-	cout << "Chimpanzee:" << endl;
-	cout << "\t\t 2 chimpanzees to 1 person" << endl;
-	cout << "\t\t .5 people to 1 chimpanzee" << endl;
+	cout << "\tChimpanzee:" << endl;
+	cout << "\t\t\t 2 chimpanzees to 1 person" << endl;
+	cout << "\t\t\t .5 people to 1 chimpanzee" << endl;
 	
-	cout << "Gator:" << endl;
-	cout << "\t\t .1 gators to 1 person" << endl;
-	cout << "\t\t 10 people to 1 gator" << endl;
+	cout << "\tGator:" << endl;
+	cout << "\t\t\t .1 gators to 1 person" << endl;
+	cout << "\t\t\t 10 people to 1 gator" << endl;
 	
-	cout << "Gorilla:" << endl;
-	cout << "\t\t .05 gorillas to 1 person" << endl;
-	cout << "\t\t 20 people to 1 gorilla" << endl;
+	cout << "\tGorilla:" << endl;
+	cout << "\t\t\t .05 gorillas to 1 person" << endl;
+	cout << "\t\t\t 20 people to 1 gorilla" << endl;
 }
 
 void createAnimals(vector<pair<string, float>>& animals)
@@ -161,18 +161,31 @@ float getAnimalWeight(string animal, vector<pair<string, float>> animals)
 	return 0.0;
 }
 
+void printCityList(vector<City*> cities)
+{
+	bool firstPrinted = false;
+	for(int i = 0; i < cities.size(); i++){
+		if(firstPrinted == false){
+			cout << cities[i]->name;
+		}else{
+			cout << " | " << cities[i]->name;
+		}
+	}
+	cout << endl;
+}
+
 int main()
 {
 	// introduction
 	cout << "Hello and welcome to: Lions and Tigers and Bears, Oh My!" << endl;
-	cout << "This program will allow you to approxiate the number of a type of animal needed to overthrow any city" << endl;
-	cout << "in the United States based off of population data gathered by the US Census Department.\n" << endl;
+	cout << "\nThis program will allow you to approxiate the number of a type of animal needed to overthrow any city" << endl;
+	cout << "in the United States based off of population data gathered by the US Census Department." << endl;
 
 	// user chooses which option to run
-	cout << "Please indicate which process you would like to run:" << endl;
+	cout << "\nPlease indicate which process you would like to run:" << endl;
 	cout << "\t[1]\tEnter the name of any city in the United States and select an animal from the list that will be provided." << endl;
 	cout << "\t\tWe will then tell you the approxiate number of that animal needed to overthrow that city based off population." << endl;
-	cout << "\t[2]\tSelect one or more animals from the list that will be provided along with the respective quantities and" << endl;
+	cout << "\n\t[2]\tSelect one or more animals from the list that will be provided along with the respective quantities and" << endl;
 	cout << "\t\twe will then tell you which US cities could reasonably be overthrown by your assembled animal army." << endl;
 
 	int userOption = 0;
@@ -231,8 +244,8 @@ int main()
 
 		// print out results
 		cout << "[BST] " << cityState << " could be overthrown by " << animalsNeededBST << " " << userAnimal << "s.";
-		cout << "[AVL] " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
+		cout << "[AVL] " << cityState << " could be overthrown by " << animalsNeededAVL << " " << userAnimal << "s.";
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
 	}
@@ -275,10 +288,14 @@ int main()
 
 		// print results
 		cout << "[BST] The following cities could be overthrown by your animal army:" << endl;
-		//print out vector of cities from BST
-		cout << "[AVL] The following cities could be overthrown by your animal army:" << endl;
-		//print out vector of cities from AVL
+		//search thru bst and return vector of City* with populations less than / equal to maxPop
+		vector<City*> bstCitiesOverthrown;
+		printCityList(bstCitiesOverthrown);
 		cout << "Searching through the BST took " << bstSearchTime << " nanoseconds." << endl;
+		cout << "[AVL] The following cities could be overthrown by your animal army:" << endl;
+		//search thru bst and return vector of City* with populations less than / equal to maxPop
+		vector<City*> avlCitiesOverthrown;
+		printCityList(avlCitiesOverthrown);
 		cout << "Searching through the AVL Tree took " << avlSearchTime << " nanoseconds." << endl;
 
 	}
