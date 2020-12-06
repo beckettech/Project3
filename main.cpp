@@ -220,15 +220,18 @@ int main()
 		
 		string cityChoice, stateChoice;
 		cout << "Please enter the city to be overthrown: ";
-		cin >> cityChoice;
+		cin.ignore();
+		getline(cin, cityChoice);
 		cout << "In which US state is " << cityChoice << " located: ";
-		cin >> stateChoice;
+		cin.ignore();
+		getline(cin, stateChoice);
 		string cityState = cityChoice + ", " + stateChoice;
 		string userAnimal;
 		bool validAnimal = false;
 		while(!validAnimal){
 			cout << "Please select your animal from the above list: ";
-			cin >> userAnimal;
+			cin.ignore();
+			getline(cin, userAnimal);
 			transform(userAnimal.begin(), userAnimal.end(), userAnimal.begin(), ::tolower);
 			validAnimal = validateAnimalAddition(userAnimal);
 		}
@@ -270,7 +273,8 @@ int main()
 		int numOfAnimal;
 		while(userAnimal != "-1"){
 			cout << "Please enter the animal name: ";
-			cin >> userAnimal;
+			cin.ignore();
+			getline(cin, userAnimal);
 			if(userAnimal == "-1"){
 				break;
 			}
