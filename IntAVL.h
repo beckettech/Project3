@@ -75,6 +75,8 @@ int IntAVL::findHeight(City* root)
 
 int IntAVL::bfactor(City* root)
 {
+    if(root == NULL)
+        return 0;
 	int leftHeight = findHeight(root->left);
 	int rightHeight = findHeight(root->right);
 	return leftHeight = rightHeight;
@@ -82,7 +84,9 @@ int IntAVL::bfactor(City* root)
 
 struct City* IntAVL::balance(City* root)
 {
-	int bf = bfactor(root);
+    int bf = 0;
+    if(root != NULL)
+        bf = bfactor(root);
 	if (bf > 1)
 	{
 		if (bfactor(root->left) > 0)
@@ -102,9 +106,13 @@ struct City* IntAVL::balance(City* root)
 
 struct City* IntAVL::rotateR(City* head)
 {
+    if (head == nullptr)
+    {
+        return nullptr;
+    }
 	if (head->right == nullptr)
 	{
-		cout << "unsuccessful" << endl;
+        return nullptr;
 	}
 	City* temp;
 	temp = head->right;
@@ -116,9 +124,13 @@ struct City* IntAVL::rotateR(City* head)
 
 struct City* IntAVL::rotateL(City* head)
 {
+    if (head == nullptr)
+    {
+        return nullptr;
+    }
 	if (head->left == nullptr)
 	{
-		cout << "unsuccessful" << endl;
+        return nullptr;
 	}
 	City* temp;
 	temp = head->left;
@@ -172,6 +184,7 @@ void IntAVL::insert(City* newCity)
 			else
 			{
 				temp->right = newCity;
+                balance(head);
 				break;
 			}
 		}
@@ -184,6 +197,7 @@ void IntAVL::insert(City* newCity)
 			else
 			{
 				temp->left = newCity;
+                balance(head);
 				break;
 			}
 		}

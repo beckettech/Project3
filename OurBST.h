@@ -28,7 +28,7 @@ City* OurBST::FindCity(string name) {
 
 	while (temp->name != name) {
 		int a = name.compare(temp->name);
-		if (a == 1) {
+		if (a >= 1) {
 			if (temp->right) {
 				temp = temp->right;
 			}
@@ -36,7 +36,7 @@ City* OurBST::FindCity(string name) {
 				return nullptr;
 			}
 		}
-		if (a == -1) {
+		if (a <= -1) {
 			if (temp->left) {
 				temp = temp->left;
 			}
@@ -66,7 +66,7 @@ void OurBST::insert(City* newCity) {
 
 	while (temp->name != name) {
 		int a = name.compare(temp->name);
-		if (a == 1) {
+		if (a >= 1) {
 			if (temp->right) {
 				temp = temp->right;
 			}
@@ -76,7 +76,7 @@ void OurBST::insert(City* newCity) {
 				break;
 			}
 		}
-		if (a == -1) {
+		if (a <= -1) {
 			if (temp->left) {
 				temp = temp->left;
 			}
